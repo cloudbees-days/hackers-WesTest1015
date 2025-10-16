@@ -33,7 +33,7 @@ jobs:
         with:
           token: ${{ secrets.WES_GH_TOKEN }}
           org-name: cloudbees-days
-          repo-name: hackers-WesTest4Mark2
+          repo-name: hackers-WesTest1015
           branch-name: main
           workflow-name: test-and-build-image
           test-type: JUnit
@@ -156,7 +156,7 @@ jobs:
         run: |
           apk add --no-cache curl jq
           curl -u ${{ secrets.SONAR_USER }}:${{ secrets.SONAR_TOKEN }} \
-          "https://sonarqube.cb-demos.io/api/issues/search?componentKeys=HackersOrganized&severities=BLOCKER,CRITICAL,MAJOR,MINOR" \
+          "https://sonarqube.cb-demos.io/api/issues/search?componentKeys=hackers-WesTest1015&severities=BLOCKER,CRITICAL,MAJOR,MINOR" \
           -o sonar-issues.json
           BLOCKER_COUNT=$(jq '[.issues[] | select(.severity=="BLOCKER")] | length' sonar-issues.json)
           CRITICAL_COUNT=$(jq '[.issues[] | select(.severity=="CRITICAL")] | length' sonar-issues.json)
